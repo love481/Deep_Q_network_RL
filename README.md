@@ -33,7 +33,7 @@ To train or evaluate the models run on command line
 * `\src\model.py` --> Pytorch implementation of policy part
 * `\src\dqn.py` --> Implementation modules of dqn algorithm
 * `\src\model\lunar_lander\..` --> All trained model learning for lunar_lander environment
-* `\src\cart_pole\..` --> All trained model for cart_pole environment
+* `\src\model\cart_pole\..` --> All trained model for cart_pole environment
 
 
 ## Results for cart_pole
