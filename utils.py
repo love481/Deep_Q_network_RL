@@ -27,7 +27,7 @@ class GaussianNoise:
 class OUNoise:
     """Ornstein-Uhlenbeck process."""
 
-    def __init__(self, size, seed, mu=0.0, theta=0.15, sigma=0.2, sigma_min = 0.01, sigma_decay=0.995):
+    def __init__(self, size, seed, mu=0.0, theta=0.15, sigma=0.2, sigma_min = 0.01, sigma_decay=0.9999):
         """Initialize parameters and noise process."""
         self.mu = mu * np.ones(size)
         self.theta = theta
@@ -53,12 +53,18 @@ class OUNoise:
 
 
 def make_env(args):
-    env = gym.make('LunarLander-v2')
-    env.seed(2)
-    args.obs_shape = 8
-    args.action_shape = 4
+
+    # env = gym.make('LunarLander-v2')
+    # args.obs_shape = 8
+    # args.action_shape = 4
+
+    env = gym.make('CartPole-v1')
+    args.obs_shape = 4
+    args.action_shape = 2
+
     args.high_action = 1
     args.low_action = -1
+    env.seed(2)
     args.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     args.seed=2
     return env, args

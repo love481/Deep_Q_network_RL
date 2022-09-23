@@ -50,10 +50,11 @@ class DQN:
         o_next=experiences['o_next']
 
         # calculate the target Q value function
-           
+        #for greedy approach
         q_next=self.q_target_network.forward(o_next).detach().max(1)[0].unsqueeze(1)
         target_q = (r.unsqueeze(-1) + (self.args.gamma *q_next*(1-done.unsqueeze(-1))))
         expected_q=self.q_network.forward(o).gather(1, a.type(torch.int64)).max(1)[0].unsqueeze(1)
+
         loss = F.mse_loss(expected_q, target_q )
         self.q_optim.zero_grad()
         loss.backward()

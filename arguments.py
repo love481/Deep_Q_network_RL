@@ -9,7 +9,7 @@ Here are the param for the training
 def get_args():
     parser = argparse.ArgumentParser("Reinforcement Learning experiments for single agent environments")
     # Environment
-    parser.add_argument("--scenario-name", type=str, default="lunar_lander", help="name of the scenario script")
+    parser.add_argument("--scenario-name", type=str, default="cart_pole", help="name of the scenario script")
     parser.add_argument("--max-episode-len", type=int, default=50000, help="maximum episode length")
     parser.add_argument("--time-steps", type=int, default=10, help="number of time steps")
     # Core training parameters

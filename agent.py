@@ -21,15 +21,17 @@ class Agent(nn.Module):
             action_values =  self.policy.q_network(state).squeeze(0).cpu().data.numpy()
         self.policy.q_network.train()
 
+      # for continuous action
         # if epsilon>0:
         #     action_values += self.noise.sample()
-        # else:
-        # Epsilon-greedy action selection
+        #     action_values=np.clip(action_values, -1, 1)
+
+        # # Epsilon-greedy action selection
         if random.random() > epsilon:
             action_values = np.argmax(action_values)
         else:
             action_values = random.choice(np.arange(self.args.action_shape))
-        # print(action_values)
+        
         return action_values
 
     def learn(self, experiences):
